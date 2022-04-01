@@ -4,8 +4,8 @@ import { Fragment } from 'react';
 import  { useContext } from 'react';
 import { ImagesContext } from './context/images-context';
 import FavoriteItem from './components/FavoriteItem';
-import Main from './main'
 import Homepage from './components/homepage';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 
 
 
@@ -16,11 +16,21 @@ function App() {
   
 
   return (
-    <Fragment>
-      
-      <Homepage></Homepage>
+    <main style={{ padding: "1rem 0" }}>
+
     
-    </Fragment>
+
+      <BrowserRouter>
+      
+      <Routes> {/* The Switch decides which component to show based on the current URL.*/}
+      <Route path="/" element={<Homepage />} />  
+      <Route  path='/favorites' element={<FavoriteItem/>}></Route>
+    </Routes>
+      
+    
+      </BrowserRouter>
+    </main>
+
   );
 }
 
