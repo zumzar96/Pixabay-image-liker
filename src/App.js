@@ -8,8 +8,6 @@ function App() {
     <main style={{ padding: "1rem 0" }}>
       <BrowserRouter>
         <Routes>
-          {" "}
-          {/* The Switch decides which component to show based on the current URL.*/}
           <Route path="/" element={<Homepage />} />
           <Route path="/favorites" element={<FavoriteItem />}></Route>
         </Routes>
