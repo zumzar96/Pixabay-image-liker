@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './assets/main.css';
-import App from './App';
-import ImagesProvider from './context/images-context';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { combineReducers, createStore } from "redux";
+import App from "./App";
+import imageReducer from "./store/reducers/images";
 
+const rootReducer = combineReducers({
+  shop: imageReducer,
+});
 
+const store = createStore(rootReducer);
 
 ReactDOM.render(
-  
-
-  <ImagesProvider>
+  <Provider store={store}>
     <App />
-  </ImagesProvider>,
+  </Provider>,
 
-  document.getElementById('root')
+  document.getElementById("root")
 );

@@ -1,17 +1,12 @@
-import React from 'react';
-import  { useContext } from 'react';
+import React from "react";
 
-
-
-const Item = props => {
+const Item = (props) => {
   return (
-    
-      <div>
-        <img src={props.url} alt="" className="w-full"/>
-        <h2>{props.views}</h2>
-        <p>{props.downloads}</p>
-      </div>
-    
+    <div>
+      <img src={props.url} alt="" className="w-full" />
+      <h2>{props.views}</h2>
+      <p>{props.downloads}</p>
+    </div>
   );
 };
 
