@@ -1,6 +1,6 @@
-import React  from "react";
-import FavoriteItem from "./components/FavoriteItem";
-import Homepage from "./components/homepage";
+import React from "react";
+import FavoriteItem from "./components/FavoriteImages";
+import Homepage from "./components/Homepage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {

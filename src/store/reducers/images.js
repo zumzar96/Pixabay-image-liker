@@ -1,9 +1,8 @@
-import { TOGGLE_FAV } from '../actions/images';
-import { SET_IMAGES_LIST} from '../actions/images';
-
+import { TOGGLE_FAV } from "../actions/images";
+import { SET_IMAGES_LIST } from "../actions/images";
 
 const initialState = {
-  images : []
+  images: [],
 };
 
 const imageReducer = (state = initialState, action) => {
@@ -12,22 +11,19 @@ const imageReducer = (state = initialState, action) => {
       return {
         ...state,
         images: action.payload,
-        
       };
     }
     case TOGGLE_FAV:
-      const imgIndex = state.images.findIndex(
-        p => p.id === action.imageId
-      );
+      const imgIndex = state.images.findIndex((p) => p.id === action.imageId);
       const newFavStatus = !state.images[imgIndex].isFavorite;
       const updatedImages = [...state.images];
       updatedImages[imgIndex] = {
         ...state.images[imgIndex],
-        isFavorite: newFavStatus
+        isFavorite: newFavStatus,
       };
       return {
         ...state,
-        images: updatedImages
+        images: updatedImages,
       };
     default:
       return state;
