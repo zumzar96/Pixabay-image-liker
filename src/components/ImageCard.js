@@ -1,69 +1,60 @@
-import React, { Fragment } from 'react';
-import { useState } from 'react';
-import { useReducer } from "react";
-import ReactDOM from "react-dom";
-import  { useContext } from 'react';
-import { ImagesContext } from '../context/images-context';
-import FavoriteItem from './FavoriteItem';
-
-
+import React, { Fragment } from "react";
+import { useDispatch } from "react-redux";
+import { toggleFav } from "../store/actions/images";
 
 const ImageCard = ({ image }) => {
-  const favoriteImages = useContext(ImagesContext).images.filter(p => p.isFavorite);
-
-  const toggleFav = useContext(ImagesContext).toggleFav;
-
+  const dispatch = useDispatch();
   const toggleFavHandler = () => {
-    toggleFav(image.id);
-    console.log(favoriteImages)
-    
+    dispatch(toggleFav(image.id));
   };
-  const tags = image.tags.split(',');
+  const tags = image.tags.split(",");
 
   return (
-    
     <Fragment>
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img src={image.webformatURL} alt="" className="w-full"/>
-      <div className="px-6 py-4">
-        <div className="font-bold text-purple-500 text-xl mb-2">
-          Photo by {image.user}
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <img src={image.webformatURL} alt="" className="w-full" />
+        <div className="px-6 py-4">
+          <div className="font-bold text-purple-500 text-xl mb-2">
+            Photo by {image.user}
+          </div>
+          <ul>
+            <li>
+              <strong>isFavorite </strong>
+            </li>
+            <li>
+              <strong>Views: </strong>
+              {image.views}
+            </li>
+            <li>
+              <strong>Downloads: </strong>
+              {image.downloads}
+            </li>
+            <li>
+              <strong>Likes: </strong>
+            </li>
+
+            <button
+              onClick={toggleFavHandler}
+              className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              type="submit"
+            >
+              like
+            </button>
+          </ul>
         </div>
-        <ul>
-        <li>
-            <strong>isFavorite </strong>
-            {image.isFavorite}
-          </li>
-          <li>
-            <strong>Views: </strong>
-            {image.views}
-          </li>
-          <li>
-            <strong>Downloads: </strong>
-            {image.downloads}
-          </li>
-          <li>
-            <strong>Likes: </strong>
-            
-            
-          </li>
-          
-          <button onClick={toggleFavHandler} className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
-      like
-      </button>
-        </ul>
+        <div className="px-6 py-4">
+          {tags.map((tag, index) => (
+            <span
+              key={index}
+              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
       </div>
-      <div className="px-6 py-4">
-        {tags.map((tag, index) => (
-          <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-          #{tag}
-        </span>
-        ))}
-      </div>
-    </div>
-    
     </Fragment>
-  )
-}
+  );
+};
 
 export default ImageCard;
