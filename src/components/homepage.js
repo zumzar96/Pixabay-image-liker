@@ -6,8 +6,6 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { setImages } from "../store/actions/images";
-import Modal from "./Modal";
-import './Modal.module.css'
 
 const Homepage = (props) => {
   const navigate = useNavigate();

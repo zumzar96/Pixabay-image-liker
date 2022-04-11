@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleFav } from "../store/actions/images";
 
+
 const Item = (props) => {
   const dispatch = useDispatch();
   const toggleFavHandler = () => {

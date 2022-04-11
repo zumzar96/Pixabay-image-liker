@@ -2,8 +2,6 @@ import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { toggleFav } from "../store/actions/images";
 import { setModal } from "../store/actions/images";
-import Modal from "./Modal";
-import './Modal.module.css'
 
 
 const ImageCard = ({ image }) => {
